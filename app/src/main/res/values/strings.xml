@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">VirtualDressingRoom</string>
+    <string name="title_activity_live_camera">LiveCameraActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="freepik">images: freepik.com</string>
+    <string name="glasses">Glasses</string>
+    <string name="mask">Mask</string>
+    <string name="t_shirt">T-shirt</string>
+    <string name="waist">Recalculate waist</string>
+    <string name="title_activity_camera">CameraActivity</string>
+    <string name="dress">Dress</string>
+    <string name="input_image">input image</string>
+    <string name="switch_to_camera">Switch to camera</string>
+    <string name="switch_to_photos">switch to photos</string>
+</resources>

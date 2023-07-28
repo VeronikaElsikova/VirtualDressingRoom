@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/grey"
+        android:text="@string/freepik" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/buttonGlasses"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:text="@string/glasses"
+            android:textSize="11sp"/>
+
+        <Button
+            android:id="@+id/buttonMask"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:text="@string/mask"
+            android:textSize="11sp"/>
+
+        <Button
+            android:id="@+id/buttonTShirt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:text="@string/t_shirt"
+            android:textSize="11sp"/>
+
+        <Button
+            android:id="@+id/buttonDress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:text="@string/dress"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:layout_marginStart="8dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:drawableLeft="@drawable/ic_baseline_cached_24_black"
+        android:drawablePadding="5dp"
+        android:text="@string/switch_to_photos"
+        android:textSize="11sp" />
+
+</RelativeLayout>
