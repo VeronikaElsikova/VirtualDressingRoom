@@ -21,15 +21,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.VirtualDressingRoom"
         tools:targetApi="31">
         <activity
             android:name=".CameraActivity"
+            android:theme="@style/NoActionBar"
             android:exported="true">
+
         </activity>
 
         <activity
             android:name=".PhotoActivity"
+            android:theme="@style/NoActionBarPhoto"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,18 +1,30 @@
 package cz.upol.inf.virtualdressingroom;
 
 import android.Manifest;
+import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
@@ -48,8 +60,19 @@ public class CameraActivity extends FragmentActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        switchActivity = new Intent(this, PhotoActivity.class);
+
         setContentView(R.layout.activity_camera);
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        getActionBar().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        getActionBar().setDisplayShowTitleEnabled(false);
+        getActionBar().setDisplayShowHomeEnabled(false) ;
+        getActionBar().setDisplayShowTitleEnabled(false);
+
+
+        switchActivity = new Intent(this, PhotoActivity.class);
+
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         cameraFragment = (CameraFragment) getSupportFragmentManager().findFragmentById(R.id.camera_fragment);
@@ -127,32 +150,39 @@ public class CameraActivity extends FragmentActivity implements
         }
     }
 
-
     @Override
     public void onButtonGlassesClick() {
+        buttonsFragment.buttonGlassesClicked();
         if(outfit.getGlasses().isEmpty()) outfit.setGlasses(glasses);
         else outfit.setGlasses(null);
+
         cameraFragment.setOutfit(outfit);
     }
 
     @Override
     public void onButtonMaskClick() {
+        buttonsFragment.buttonMaskClicked();
         if(outfit.getFaceMasks().isEmpty()) outfit.setFaceMask(mask);
         else outfit.setFaceMask(null);
+
         cameraFragment.setOutfit(outfit);
     }
 
     @Override
     public void onButtonTopClick() {
+        buttonsFragment.buttonTopClicked();
         if(outfit.getTops().contains(tShirt)) outfit.getTops().remove(tShirt);
         else outfit.addTop(tShirt);
+
         cameraFragment.setOutfit(outfit);
     }
 
     @Override
     public void onButtonDressClick() {
+        buttonsFragment.buttonDressClicked();
         if(outfit.getTops().contains(dress)) outfit.getTops().remove(dress);
         else outfit.addTop(dress);
+
         cameraFragment.setOutfit(outfit);
     }
 

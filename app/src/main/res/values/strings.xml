@@ -10,13 +10,13 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="freepik">images: freepik.com</string>
-    <string name="glasses">Glasses</string>
-    <string name="mask">Mask</string>
-    <string name="t_shirt">T-shirt</string>
+    <string name="glasses">GLASSES</string>
+    <string name="mask">MASK</string>
+    <string name="t_shirt">T-SHIRT</string>
     <string name="waist">Recalculate waist</string>
     <string name="title_activity_camera">CameraActivity</string>
-    <string name="dress">Dress</string>
+    <string name="dress">DRESS</string>
     <string name="input_image">input image</string>
-    <string name="switch_to_camera">Switch to camera</string>
-    <string name="switch_to_photos">switch to photos</string>
+    <string name="switch_to_camera">SWITCH TO CAMERA</string>
+    <string name="switch_to_photos">SWITCH TO PHOTOS</string>
 </resources>

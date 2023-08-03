@@ -2,16 +2,14 @@ package cz.upol.inf.virtualdressingroom;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.media.Image;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -49,6 +47,7 @@ public class PhotoActivity extends AppCompatActivity {
         Intent switchActivity = new Intent(this, CameraActivity.class);
         setContentView(R.layout.activity_photo);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         tvCurrentPhoto = findViewById(R.id.current_photo);
         imageView = findViewById(R.id.imageViewPhoto);
@@ -86,29 +85,53 @@ public class PhotoActivity extends AppCompatActivity {
         // clothes buttons
         Button buttonGlasses = findViewById(R.id.buttonGlasses);
         buttonGlasses.setOnClickListener(view -> {
-            if(outfit.getGlasses().isEmpty()) outfit.setGlasses(glasses);
-            else outfit.setGlasses(null);
+            if(outfit.getGlasses().isEmpty()) {
+                colorButtonOn(buttonGlasses);
+                outfit.setGlasses(glasses);
+            }
+            else {
+                colorButtonOff(buttonGlasses);
+                outfit.setGlasses(null);
+            }
             addClothes();
         });
 
         Button buttonMask = findViewById(R.id.buttonMask);
         buttonMask.setOnClickListener(view -> {
-            if(outfit.getFaceMasks().isEmpty()) outfit.setFaceMask(mask);
-            else outfit.setFaceMask(null);
+            if(outfit.getFaceMasks().isEmpty()) {
+                colorButtonOn(buttonMask);
+                outfit.setFaceMask(mask);
+            }
+            else {
+                colorButtonOff(buttonMask);
+                outfit.setFaceMask(null);
+            }
             addClothes();
         });
 
         Button buttonTShirt = findViewById(R.id.buttonTShirt);
         buttonTShirt.setOnClickListener(view -> {
-            if(outfit.getTops().contains(tShirt)) outfit.getTops().remove(tShirt);
-            else outfit.addTop(tShirt);
+            if(outfit.getTops().contains(tShirt)) {
+                colorButtonOff(buttonTShirt);
+                outfit.getTops().remove(tShirt);
+            }
+            else {
+                colorButtonOn(buttonTShirt);
+                outfit.addTop(tShirt);
+            }
             addClothes();
         });
 
         Button buttonDress = findViewById(R.id.buttonDress);
         buttonDress.setOnClickListener(view -> {
-            if(outfit.getTops().contains(dress)) outfit.getTops().remove(dress);
-            else outfit.addTop(dress);
+            if(outfit.getTops().contains(dress)) {
+                colorButtonOff(buttonDress);
+                outfit.getTops().remove(dress);
+            }
+            else {
+                colorButtonOn(buttonDress);
+                outfit.addTop(dress);
+            }
             addClothes();
         });
 
@@ -124,6 +147,17 @@ public class PhotoActivity extends AppCompatActivity {
             testImagesIterator = (testImagesIterator == testImages.size() -1) ? 0 : testImagesIterator+1;
             updateCurrentPhoto();
         });
+    }
+
+    private void colorButtonOn(Button button) {
+        button.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.purple_500), PorterDuff.Mode.SRC_ATOP);
+        button.setTextColor(ContextCompat.getColor(this,  R.color.white));
+    }
+
+    private void colorButtonOff(Button button) {
+        button.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.light_grey), PorterDuff.Mode.SRC_ATOP);
+        button.setTextColor(ContextCompat.getColor(this,  R.color.black));
+
     }
 
     private void updateCurrentPhoto() {
